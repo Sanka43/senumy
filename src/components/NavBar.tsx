@@ -96,12 +96,13 @@ export default function NavBar() {
 
   return (
     <header
-      className="fixed left-0 right-0 top-0 z-10 flex h-[var(--nav-height)] min-h-[60px] items-center justify-between gap-3 border-b px-4 backdrop-blur-xl sm:px-6"
+      className="fixed left-0 right-0 top-0 z-10 flex h-[var(--nav-height)] min-h-[60px] items-center justify-between gap-3 border-b px-4 backdrop-blur-[var(--glass-blur-strong)] sm:px-6"
       style={{
         paddingTop: 'max(env(safe-area-inset-top), 10px)',
-        backgroundColor: 'rgba(8, 8, 12, 0.85)',
+        backgroundColor: 'rgba(8, 8, 12, 0.72)',
         borderBottomColor: 'var(--glass-border)',
-        WebkitBackdropFilter: 'blur(20px)',
+        boxShadow: 'inset 0 1px 0 0 var(--glass-highlight-subtle)',
+        WebkitBackdropFilter: 'blur(var(--glass-blur-strong))',
       }}
     >
       <Link
@@ -118,10 +119,12 @@ export default function NavBar() {
 
       <div className="relative ml-2 mr-2 flex min-w-0 flex-1 max-w-[220px]">
         <div
-          className="flex h-10 items-center gap-2 rounded-full border transition-colors duration-200"
+          className="flex h-10 items-center gap-2 rounded-full border backdrop-blur-[var(--glass-blur)] transition-colors duration-200"
           style={{
             borderColor: focused ? 'var(--glass-border-focus)' : 'var(--glass-border)',
             backgroundColor: 'var(--glass-fill)',
+            boxShadow: 'inset 0 1px 0 0 var(--glass-highlight-subtle)',
+            WebkitBackdropFilter: 'blur(var(--glass-blur))',
           }}
         >
           <span className="ml-3.5 shrink-0 text-[var(--text-tertiary)]" aria-hidden>
@@ -158,11 +161,12 @@ export default function NavBar() {
             id={DROPDOWN_ID}
             role="listbox"
             aria-label="Search results"
-            className="absolute left-0 right-0 top-full z-20 mt-2 max-h-[70vh] overflow-auto rounded-2xl border py-2 shadow-soft"
+            className="absolute left-0 right-0 top-full z-20 mt-2 max-h-[70vh] overflow-auto rounded-2xl border py-2 backdrop-blur-[var(--glass-blur-strong)]"
             style={{
-              backgroundColor: 'var(--bg-elevated)',
+              backgroundColor: 'rgba(18, 18, 26, 0.85)',
               borderColor: 'var(--glass-border)',
-              boxShadow: 'var(--shadow-soft), 0 0 0 1px var(--glass-border)',
+              boxShadow: 'var(--shadow-glass)',
+              WebkitBackdropFilter: 'blur(var(--glass-blur-strong))',
             }}
           >
             {results.length === 0 ? (

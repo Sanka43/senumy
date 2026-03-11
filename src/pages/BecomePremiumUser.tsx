@@ -45,7 +45,15 @@ export default function BecomePremiumUser() {
         </a>
       </div>
 
-      <div className="mt-8 rounded-xl border p-5 sm:p-6" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--glass-border)' }}>
+      <div
+        className="mt-8 rounded-xl border p-5 backdrop-blur-[var(--glass-blur-panel)] sm:p-6"
+        style={{
+          backgroundColor: 'var(--glass-fill)',
+          borderColor: 'var(--glass-border)',
+          boxShadow: 'var(--shadow-card)',
+          WebkitBackdropFilter: 'blur(var(--glass-blur-panel))',
+        }}
+      >
         <p className="text-sm font-medium text-[var(--text-primary)]">
           After you donate, check your email to find the &apos;registration code&apos; and enter it below.
           Tap Upgrade to become a premium user in the same app — no download or Settings install needed.

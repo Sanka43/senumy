@@ -35,7 +35,16 @@ export default function ThemesInstallGuide() {
       </p>
       <div className="mt-8 space-y-8">
         {STEPS.map((step, i) => (
-          <section key={i} className="rounded-xl border p-4 sm:p-5" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--glass-border)' }}>
+          <section
+            key={i}
+            className="rounded-xl border p-4 backdrop-blur-[var(--glass-blur-panel)] sm:p-5"
+            style={{
+              backgroundColor: 'var(--glass-fill)',
+              borderColor: 'var(--glass-border)',
+              boxShadow: 'var(--shadow-card)',
+              WebkitBackdropFilter: 'blur(var(--glass-blur-panel))',
+            }}
+          >
             <h4 className="text-[15px] font-semibold text-[var(--text-primary)]">{step.title}</h4>
             <div className="mt-3 flex justify-center">
               <img

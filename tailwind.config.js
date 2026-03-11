@@ -43,9 +43,15 @@ export default {
       },
       boxShadow: {
         'card': 'var(--shadow-card)',
+        'glass': 'var(--shadow-glass)',
         'soft': 'var(--shadow-soft)',
         'glass-inner': 'inset 1px 1px 0 0 var(--glass-highlight)',
         'glow-accent': 'var(--glow-accent)',
+      },
+      backdropBlur: {
+        'glass': 'var(--glass-blur)',
+        'glass-strong': 'var(--glass-blur-strong)',
+        'glass-panel': 'var(--glass-blur-panel)',
       },
       maxWidth: {
         'content': 'var(--content-max)',

@@ -11,23 +11,26 @@ type CardProps = {
 const CARD_ICON_SIZE = 56
 
 const btnBase =
-  'flex h-9 min-w-[72px] shrink-0 items-center justify-center rounded-full px-4 text-[13px] font-semibold transition-all duration-200 active:scale-[0.98]'
+  'flex h-9 min-w-[72px] shrink-0 items-center justify-center rounded-full px-4 text-[13px] font-semibold transition-all duration-200 active:scale-[0.98] backdrop-blur-[var(--glass-blur)] border'
 
 export default function Card({ icon, title, description, href, external }: CardProps) {
   return (
     <div
-      className="group flex min-h-[76px] items-center gap-4 rounded-xl border p-3.5 transition-all duration-200 hover:border-[var(--glass-border-focus)]/40 sm:gap-4 sm:p-4"
+      className="group flex min-h-[76px] items-center gap-4 rounded-xl border p-3.5 transition-all duration-200 hover:border-white/15 sm:gap-4 sm:p-4 backdrop-blur-[var(--glass-blur-panel)]"
       style={{
-        backgroundColor: 'var(--bg-card)',
+        backgroundColor: 'var(--glass-fill)',
         borderColor: 'var(--glass-border)',
         boxShadow: 'var(--shadow-card)',
+        WebkitBackdropFilter: 'blur(var(--glass-blur-panel))',
       }}
     >
       <div
-        className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border sm:h-[60px] sm:w-[60px]"
+        className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border backdrop-blur-[var(--glass-blur)] sm:h-[60px] sm:w-[60px]"
         style={{
           backgroundColor: 'var(--glass-fill-strong)',
           borderColor: 'var(--glass-border)',
+          boxShadow: 'inset 0 1px 0 0 var(--glass-highlight-subtle)',
+          WebkitBackdropFilter: 'blur(var(--glass-blur))',
         }}
       >
         {icon ? (
@@ -36,7 +39,7 @@ export default function Card({ icon, title, description, href, external }: CardP
             alt=""
             width={CARD_ICON_SIZE}
             height={CARD_ICON_SIZE}
-            className="h-full w-full object-contain p-1"
+            className="h-full w-full object-contain"
             loading="lazy"
             decoding="async"
           />
@@ -55,7 +58,11 @@ export default function Card({ icon, title, description, href, external }: CardP
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className={`${btnBase} bg-senumy-accent/15 text-senumy-accent border border-senumy-accent/30 hover:bg-senumy-accent/25`}
+          className={`${btnBase} bg-[var(--glass-fill-strong)] text-senumy-accent hover:bg-white/15`}
+          style={{
+            borderColor: 'var(--glass-border)',
+            boxShadow: 'inset 0 1px 0 0 var(--glass-highlight-subtle)',
+          }}
           aria-label="Open"
         >
           GET
@@ -63,7 +70,11 @@ export default function Card({ icon, title, description, href, external }: CardP
       ) : (
         <Link
           to={href}
-          className={`${btnBase} bg-senumy-accent/15 text-senumy-accent border border-senumy-accent/30 hover:bg-senumy-accent/25`}
+          className={`${btnBase} bg-[var(--glass-fill-strong)] text-senumy-accent hover:bg-white/15`}
+          style={{
+            borderColor: 'var(--glass-border)',
+            boxShadow: 'inset 0 1px 0 0 var(--glass-highlight-subtle)',
+          }}
           aria-label="Open"
         >
           GET

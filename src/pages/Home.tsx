@@ -7,12 +7,19 @@ export default function Home() {
   const isPremium = isPremiumUser()
   return (
     <div className="pb-10">
-      <section className="relative mx-4 mt-2 overflow-hidden rounded-2xl border border-[var(--glass-border)] sm:mx-6 sm:mt-4 sm:rounded-3xl">
+      <section
+        className="relative mx-4 mt-2 overflow-hidden rounded-2xl border sm:mx-6 sm:mt-4 sm:rounded-3xl"
+        style={{
+          borderColor: 'var(--glass-border)',
+          boxShadow: 'var(--shadow-card)',
+        }}
+      >
         <div
-          className="relative px-6 py-14 sm:py-16 md:py-20"
+          className="relative px-6 py-14 backdrop-blur-[var(--glass-blur)] sm:py-16 md:py-20"
           style={{
             background: 'linear-gradient(165deg, var(--color-senumy-navy) 0%, var(--bg-subtle) 45%, var(--bg-base) 100%)',
-            boxShadow: 'var(--shadow-soft), inset 0 1px 0 var(--glass-highlight)',
+            boxShadow: 'var(--shadow-soft), inset 0 1px 0 0 var(--glass-highlight)',
+            WebkitBackdropFilter: 'blur(var(--glass-blur))',
           }}
         >
           <div className="absolute -top-16 left-1/4 h-40 w-40 rounded-full bg-senumy-accent/20 blur-[60px]" aria-hidden />
