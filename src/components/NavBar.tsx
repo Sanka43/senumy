@@ -96,7 +96,7 @@ export default function NavBar() {
 
   return (
     <header
-      className="fixed left-0 right-0 top-0 z-10 flex h-[var(--nav-height)] min-h-[60px] items-center justify-between gap-3 border-b px-4 backdrop-blur-[var(--glass-blur-strong)] sm:px-6"
+      className="fixed left-0 right-0 top-0 z-10 flex h-[var(--nav-height)] min-h-[72px] items-center justify-between gap-2 border-b px-3 backdrop-blur-[var(--glass-blur-strong)] sm:grid sm:grid-cols-[auto,1fr,auto] sm:justify-between sm:gap-3 sm:px-6"
       style={{
         paddingTop: 'max(env(safe-area-inset-top), 10px)',
         backgroundColor: 'rgba(8, 8, 12, 0.72)',
@@ -113,13 +113,13 @@ export default function NavBar() {
         <img
           src={LOGO_SRC}
           alt="Senumy"
-          className="h-8 w-auto max-w-[130px] object-contain object-left"
+          className="h-7 w-auto max-w-[100px] object-contain object-left sm:h-8 sm:max-w-[130px]"
         />
       </Link>
 
-      <div className="relative ml-2 mr-2 flex min-w-0 flex-1 max-w-[220px]">
+      <div className="relative flex min-w-0 flex-1 justify-end sm:flex-initial sm:max-w-[180px] sm:justify-self-end">
         <div
-          className="flex h-10 items-center gap-2 rounded-full border backdrop-blur-[var(--glass-blur)] transition-colors duration-200"
+          className="flex h-11 min-w-[120px] items-center gap-2 rounded-full border px-2 backdrop-blur-[var(--glass-blur)] transition-colors duration-200 sm:min-w-0"
           style={{
             borderColor: focused ? 'var(--glass-border-focus)' : 'var(--glass-border)',
             backgroundColor: 'var(--glass-fill)',
@@ -127,7 +127,7 @@ export default function NavBar() {
             WebkitBackdropFilter: 'blur(var(--glass-blur))',
           }}
         >
-          <span className="ml-3.5 shrink-0 text-[var(--text-tertiary)]" aria-hidden>
+          <span className="ml-2 flex h-full items-center justify-center text-[var(--text-tertiary)]" aria-hidden>
             <SearchIcon />
           </span>
           <input
@@ -142,7 +142,7 @@ export default function NavBar() {
             onBlur={() => setTimeout(() => setFocused(false), 150)}
             onKeyDown={onKeyDown}
             placeholder="Search..."
-            className="min-w-0 flex-1 bg-transparent py-2 pr-3 text-[14px] placeholder-[var(--text-tertiary)] focus:outline-none"
+            className="h-full min-w-0 flex-1 bg-transparent pr-2 text-[14px] leading-none placeholder-[var(--text-tertiary)] focus:outline-none"
             style={{ color: 'var(--text-primary)' }}
             aria-label="Search apps by title"
             aria-expanded={showDropdown}
@@ -161,7 +161,7 @@ export default function NavBar() {
             id={DROPDOWN_ID}
             role="listbox"
             aria-label="Search results"
-            className="absolute left-0 right-0 top-full z-20 mt-2 max-h-[70vh] overflow-auto rounded-2xl border py-2 backdrop-blur-[var(--glass-blur-strong)]"
+            className="absolute left-0 right-0 top-full z-20 mt-2 max-h-[70vh] min-w-[200px] overflow-auto rounded-2xl border py-2 backdrop-blur-[var(--glass-blur-strong)] sm:min-w-0"
             style={{
               backgroundColor: 'rgba(18, 18, 26, 0.85)',
               borderColor: 'var(--glass-border)',
@@ -206,6 +206,8 @@ export default function NavBar() {
           </div>
         )}
       </div>
+
+      <div className="hidden h-[44px] w-[44px] sm:block sm:w-[130px]" aria-hidden />
     </header>
   )
 }
