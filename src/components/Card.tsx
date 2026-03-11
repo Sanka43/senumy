@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { isDirectDownloadUrl } from '../lib/urls'
 
 type CardProps = {
   icon: string
@@ -56,8 +57,7 @@ export default function Card({ icon, title, description, href, external }: CardP
       {external ? (
         <a
           href={href}
-          target="_blank"
-          rel="noopener noreferrer"
+          {...(isDirectDownloadUrl(href) ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
           className={`${btnBase} bg-[var(--glass-fill-strong)] text-senumy-accent hover:bg-white/15`}
           style={{
             borderColor: 'var(--glass-border)',

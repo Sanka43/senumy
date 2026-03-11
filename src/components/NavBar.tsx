@@ -1,6 +1,7 @@
 import { useRef, useState, useMemo, useCallback, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { LOGO_SRC } from '../lib/assets'
+import { isDirectDownloadUrl } from '../lib/urls'
 import { HOME_CATEGORIES, getCardHref } from '../data/homeCards'
 import type { HomeCard } from '../data/homeCards'
 import { isPremiumUser } from '../lib/validation'
@@ -44,7 +45,11 @@ export default function NavBar() {
       const href = getCardHref(card, isPremiumUser())
       const isExternal = href.startsWith('http')
       if (isExternal) {
-        window.open(href, '_blank', 'noopener,noreferrer')
+        if (isDirectDownloadUrl(href)) {
+          window.location.href = href
+        } else {
+          window.open(href, '_blank', 'noopener,noreferrer')
+        }
       } else {
         navigate(href)
       }
