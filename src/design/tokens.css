@@ -1,0 +1,25 @@
+:root {
+  --color-senumy-navy: #00006d;
+  --color-senumy-blue: #20207f;
+  --color-senumy-accent: #00adf0;
+  --color-senumy-link: #006fd1;
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --touch-min: 44px;
+  --nav-height: 56px;
+  --radius-ios: 12px;
+  --radius-ios-lg: 20px;
+
+  /* Dark theme + liquid glass */
+  --bg-base: #0c0c0f;
+  --bg-elevated: #141418;
+  --glass-fill: rgba(255, 255, 255, 0.06);
+  --glass-fill-strong: rgba(255, 255, 255, 0.12);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-focus: rgba(0, 173, 240, 0.5);
+  --text-primary: #f5f5f7;
+  --text-secondary: #a1a1a6;
+  --text-tertiary: #6e6e73;
+  --glass-highlight: rgba(255, 255, 255, 0.12);
+  --glow-accent: 0 0 20px rgba(0, 173, 240, 0.25);
+}

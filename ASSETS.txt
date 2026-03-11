@@ -1,0 +1,63 @@
+# Required assets for senumy-web (all paths relative to senumy-web root)
+# Use this checklist to verify each file exists before deleting the rest of mainstore_files.
+
+# Favicon (optional: app uses /vite.svg if this is missing)
+public/img/f7-icon.png
+
+# Logo
+src/img/senumylogo/senumy-logo.png
+
+# Card icons (src/img/cardIcons/)
+senipa.png
+applejr.webp
+ipa-installer.png
+maple-ipa.png
+velixa.png
+zignee.png
+jbapastore.png
+redensa.png
+Palera1n.webp
+NekoJb.png
+sileemapp.png
+zjailbreak.png
+Unc0verBlack.png
+cydia2.png
+Sileo2.webp
+ios26.png
+AppleGPT.PNG
+Safari3DX.png
+apple-ai-search.png
+emula.png
+sileem.png
+altlist.png
+quorix.png
+nexara.png
+trollstore.png
+tutupro.png
+panda_helper.png
+iosninja.webp
+iosgods.webp
+appvalley.webp
+tvnow.png
+apple_intelligence.png
+glance.webp
+classicls.jpg
+home_screen_creator.jpg
+vertiblur.jpg
+wetr.jpg
+waltz.jpg
+accessible.jpg
+adguard-dns.png
+ipainstaller.webp
+iconfig.webp
+ideviceinfo.webp
+ela.png
+Android-on-iOS.png
+ryOS_favicon.ico
+
+# Theme install guide screenshots (src/img/iosThemes/screenshots-installGuide/)
+guide1.png
+guide2.png
+guide3.png
+guide4.png
+guide6.png
