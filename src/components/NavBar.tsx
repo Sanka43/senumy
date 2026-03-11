@@ -128,7 +128,7 @@ export default function NavBar() {
         <img
           src={LOGO_SRC}
           alt="Senumy"
-          className="h-7 w-auto max-w-[100px] object-contain object-left sm:h-8 sm:max-w-[130px]"
+          className="h-9 w-auto max-w-[120px] object-contain object-left sm:h-11 sm:max-w-[180px]"
         />
       </Link>
 
@@ -243,7 +243,7 @@ export default function NavBar() {
         )}
       </div>
 
-      <div className="hidden h-[44px] w-[44px] sm:block sm:w-[130px]" aria-hidden />
+      <div className="hidden h-[44px] w-[44px] sm:block sm:w-[180px]" aria-hidden />
     </header>
   )
 }
