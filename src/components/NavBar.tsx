@@ -1,4 +1,4 @@
-import { useRef, useState, useMemo, useCallback } from 'react'
+import { useRef, useState, useMemo, useCallback, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { LOGO_SRC } from '../lib/assets'
 import { HOME_CATEGORIES, getCardHref } from '../data/homeCards'
@@ -24,9 +24,17 @@ export default function NavBar() {
   const navigate = useNavigate()
   const [query, setQuery] = useState('')
   const [focused, setFocused] = useState(false)
+  const [searchExpanded, setSearchExpanded] = useState(false)
   const [highlightedIndex, setHighlightedIndex] = useState(-1)
   const inputRef = useRef<HTMLInputElement>(null)
   const dropdownRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (searchExpanded) {
+      const t = setTimeout(() => inputRef.current?.focus(), 0)
+      return () => clearTimeout(t)
+    }
+  }, [searchExpanded])
 
   const results = useMemo(() => searchByTitle(query), [query])
   const showDropdown = focused && query.trim().length > 0
@@ -42,6 +50,7 @@ export default function NavBar() {
       }
       setQuery('')
       setFocused(false)
+      setSearchExpanded(false)
       setHighlightedIndex(-1)
       inputRef.current?.blur()
     },
@@ -86,6 +95,7 @@ export default function NavBar() {
       case 'Escape':
         e.preventDefault()
         setFocused(false)
+        setSearchExpanded(false)
         setHighlightedIndex(-1)
         inputRef.current?.blur()
         break
@@ -119,40 +129,61 @@ export default function NavBar() {
 
       <div className="relative flex min-w-0 flex-1 justify-end sm:flex-initial sm:max-w-[180px] sm:justify-self-end">
         <div
-          className="flex h-11 min-w-[120px] items-center gap-2 rounded-full border px-2 backdrop-blur-[var(--glass-blur)] transition-colors duration-200 sm:min-w-0"
+          className="flex h-11 shrink-0 items-center justify-end overflow-hidden rounded-full border backdrop-blur-[var(--glass-blur)] transition-[width,min-width,border-color] duration-500 ease-in-out"
           style={{
+            width: searchExpanded ? '100%' : '44px',
+            minWidth: searchExpanded ? '120px' : undefined,
             borderColor: focused ? 'var(--glass-border-focus)' : 'var(--glass-border)',
             backgroundColor: 'var(--glass-fill)',
             boxShadow: 'inset 0 1px 0 0 var(--glass-highlight-subtle)',
             WebkitBackdropFilter: 'blur(var(--glass-blur))',
           }}
         >
-          <span className="ml-2 flex h-full items-center justify-center text-[var(--text-tertiary)]" aria-hidden>
-            <SearchIcon />
-          </span>
-          <input
-            ref={inputRef}
-            type="search"
-            value={query}
-            onChange={(e) => {
-              setQuery(e.target.value)
-              setHighlightedIndex(-1)
-            }}
-            onFocus={() => setFocused(true)}
-            onBlur={() => setTimeout(() => setFocused(false), 150)}
-            onKeyDown={onKeyDown}
-            placeholder="Search..."
-            className="h-full min-w-0 flex-1 bg-transparent pr-2 text-[14px] leading-none placeholder-[var(--text-tertiary)] focus:outline-none"
-            style={{ color: 'var(--text-primary)' }}
-            aria-label="Search apps by title"
-            aria-expanded={showDropdown}
-            aria-controls={showDropdown ? DROPDOWN_ID : undefined}
-            aria-autocomplete="list"
-            aria-activedescendant={
-              showDropdown && highlightedIndex >= 0 ? `${RESULT_ID_PREFIX}${highlightedIndex}` : undefined
-            }
-            autoComplete="off"
-          />
+          {!searchExpanded ? (
+            <button
+              type="button"
+              className="flex h-11 w-11 shrink-0 items-center justify-center text-[var(--text-tertiary)] rounded-full hover:text-[var(--text-secondary)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--glass-border-focus)]"
+              aria-label="Search"
+              onClick={() => setSearchExpanded(true)}
+            >
+              <SearchIcon />
+            </button>
+          ) : (
+            <>
+              <span className="ml-2 flex h-full shrink-0 items-center justify-center text-[var(--text-tertiary)]" aria-hidden>
+                <SearchIcon />
+              </span>
+              <input
+                ref={inputRef}
+                type="search"
+                value={query}
+                onChange={(e) => {
+                  setQuery(e.target.value)
+                  setHighlightedIndex(-1)
+                }}
+                onFocus={() => setFocused(true)}
+                onBlur={() => {
+                  setTimeout(() => {
+                    setFocused(false)
+                    setSearchExpanded(false)
+                    setHighlightedIndex(-1)
+                  }, 150)
+                }}
+                onKeyDown={onKeyDown}
+                placeholder="Search..."
+                className="h-full min-w-0 flex-1 bg-transparent px-2 pr-2 text-[14px] leading-none placeholder-[var(--text-tertiary)] focus:outline-none"
+                style={{ color: 'var(--text-primary)' }}
+                aria-label="Search apps by title"
+                aria-expanded={showDropdown}
+                aria-controls={showDropdown ? DROPDOWN_ID : undefined}
+                aria-autocomplete="list"
+                aria-activedescendant={
+                  showDropdown && highlightedIndex >= 0 ? `${RESULT_ID_PREFIX}${highlightedIndex}` : undefined
+                }
+                autoComplete="off"
+              />
+            </>
+          )}
         </div>
 
         {showDropdown && (
