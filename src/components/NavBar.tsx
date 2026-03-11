@@ -96,34 +96,37 @@ export default function NavBar() {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-10 flex h-[var(--nav-height)] min-h-[56px] items-center justify-between gap-3 border-b px-5 backdrop-blur-xl"
+      className="fixed left-0 right-0 top-0 z-10 flex h-[var(--nav-height)] min-h-[60px] items-center justify-between gap-3 border-b px-4 backdrop-blur-xl sm:px-6"
       style={{
-        paddingTop: 'max(env(safe-area-inset-top), 8px)',
-        backgroundColor: 'var(--glass-fill)',
+        paddingTop: 'max(env(safe-area-inset-top), 10px)',
+        backgroundColor: 'rgba(8, 8, 12, 0.85)',
         borderBottomColor: 'var(--glass-border)',
-        WebkitBackdropFilter: 'blur(24px)',
+        WebkitBackdropFilter: 'blur(20px)',
       }}
     >
       <Link
         to="/"
-        className="flex min-h-[44px] min-w-[44px] shrink items-center justify-start"
+        className="flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-start"
         aria-label="Senumy home"
       >
         <img
           src={LOGO_SRC}
           alt="Senumy"
-          className="h-[36px] w-auto max-w-[120px] object-contain object-left"
+          className="h-8 w-auto max-w-[130px] object-contain object-left"
         />
       </Link>
 
-      <div className="relative ml-2 mb-2 mr-2 flex min-w-0 flex-1 max-w-[200px]">
+      <div className="relative ml-2 mr-2 flex min-w-0 flex-1 max-w-[220px]">
         <div
-          className="flex h-9 items-center gap-3 border-b transition-colors duration-200"
+          className="flex h-10 items-center gap-2 rounded-full border transition-colors duration-200"
           style={{
-            borderBottomColor: focused ? 'var(--glass-border-focus)' : 'var(--glass-border)',
-            borderBottomWidth: '1px',
+            borderColor: focused ? 'var(--glass-border-focus)' : 'var(--glass-border)',
+            backgroundColor: 'var(--glass-fill)',
           }}
         >
+          <span className="ml-3.5 shrink-0 text-[var(--text-tertiary)]" aria-hidden>
+            <SearchIcon />
+          </span>
           <input
             ref={inputRef}
             type="search"
@@ -135,8 +138,8 @@ export default function NavBar() {
             onFocus={() => setFocused(true)}
             onBlur={() => setTimeout(() => setFocused(false), 150)}
             onKeyDown={onKeyDown}
-            placeholder="Search anything..."
-            className="min-w-0 flex-1 bg-transparent py-1.5 text-[15px] placeholder-[var(--text-tertiary)] focus:outline-none"
+            placeholder="Search..."
+            className="min-w-0 flex-1 bg-transparent py-2 pr-3 text-[14px] placeholder-[var(--text-tertiary)] focus:outline-none"
             style={{ color: 'var(--text-primary)' }}
             aria-label="Search apps by title"
             aria-expanded={showDropdown}
@@ -147,9 +150,6 @@ export default function NavBar() {
             }
             autoComplete="off"
           />
-          <span className="shrink-0 text-[var(--text-tertiary)]" aria-hidden>
-            <SearchIcon />
-          </span>
         </div>
 
         {showDropdown && (
@@ -158,11 +158,11 @@ export default function NavBar() {
             id={DROPDOWN_ID}
             role="listbox"
             aria-label="Search results"
-            className="absolute left-0 right-0 top-full z-20 mt-2 max-h-[70vh] overflow-auto rounded-2xl border py-2 shadow-xl backdrop-blur-xl"
+            className="absolute left-0 right-0 top-full z-20 mt-2 max-h-[70vh] overflow-auto rounded-2xl border py-2 shadow-soft"
             style={{
-              backgroundColor: 'var(--glass-fill)',
+              backgroundColor: 'var(--bg-elevated)',
               borderColor: 'var(--glass-border)',
-              boxShadow: '0 12px 40px -12px rgba(0,0,0,0.5), inset 0 1px 0 var(--glass-highlight)',
+              boxShadow: 'var(--shadow-soft), 0 0 0 1px var(--glass-border)',
             }}
           >
             {results.length === 0 ? (
@@ -189,10 +189,10 @@ export default function NavBar() {
                       className={`flex w-full flex-col gap-0.5 px-4 py-3 text-left transition-colors ${
                         index === 0 ? 'rounded-t-xl' : ''
                       } ${index === results.length - 1 ? 'rounded-b-xl' : ''} ${
-                        index === highlightedIndex ? 'bg-[var(--glass-fill-strong)]' : 'hover:bg-[var(--glass-fill-strong)]'
+                        index === highlightedIndex ? 'bg-[var(--glass-fill-strong)]' : 'hover:bg-[var(--glass-fill)]'
                       }`}
                     >
-                      <span className="font-medium text-[var(--text-primary)]">{card.title}</span>
+                      <span className="font-semibold text-[var(--text-primary)]">{card.title}</span>
                       <span className="text-xs text-[var(--text-secondary)]">{card.category}</span>
                     </button>
                   </li>

@@ -1,25 +1,43 @@
 :root {
-  --color-senumy-navy: #00006d;
-  --color-senumy-blue: #20207f;
-  --color-senumy-accent: #00adf0;
-  --color-senumy-link: #006fd1;
+  /* Brand */
+  --color-senumy-navy: #0f0f3d;
+  --color-senumy-blue: #1e1e5c;
+  --color-senumy-accent: #00c2ff;
+  --color-senumy-accent-dim: #00a3d9;
+  --color-senumy-link: #38bdf8;
+  --color-senumy-glow: rgba(0, 194, 255, 0.35);
+
+  /* Safe areas & layout */
   --safe-area-top: env(safe-area-inset-top, 0px);
   --safe-area-bottom: env(safe-area-inset-bottom, 0px);
   --touch-min: 44px;
-  --nav-height: 56px;
-  --radius-ios: 12px;
-  --radius-ios-lg: 20px;
+  --nav-height: 60px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-2xl: 36px;
+  --content-max: 680px;
 
-  /* Dark theme + liquid glass */
-  --bg-base: #0c0c0f;
-  --bg-elevated: #141418;
-  --glass-fill: rgba(255, 255, 255, 0.06);
-  --glass-fill-strong: rgba(255, 255, 255, 0.12);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-border-focus: rgba(0, 173, 240, 0.5);
-  --text-primary: #f5f5f7;
-  --text-secondary: #a1a1a6;
-  --text-tertiary: #6e6e73;
-  --glass-highlight: rgba(255, 255, 255, 0.12);
-  --glow-accent: 0 0 20px rgba(0, 173, 240, 0.25);
+  /* Dark theme – refined */
+  --bg-base: #08080c;
+  --bg-subtle: #0d0d12;
+  --bg-elevated: #12121a;
+  --bg-card: rgba(255, 255, 255, 0.04);
+  --bg-card-hover: rgba(255, 255, 255, 0.07);
+
+  --glass-fill: rgba(255, 255, 255, 0.05);
+  --glass-fill-strong: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --glass-border-focus: rgba(0, 194, 255, 0.45);
+  --glass-highlight: rgba(255, 255, 255, 0.08);
+
+  --text-primary: #f4f4f6;
+  --text-secondary: #9ca3af;
+  --text-tertiary: #6b7280;
+  --text-muted: #4b5563;
+
+  --glow-accent: 0 0 32px var(--color-senumy-glow);
+  --shadow-soft: 0 4px 24px -4px rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 2px 12px -2px rgba(0, 0, 0, 0.3), 0 0 0 1px var(--glass-border);
 }

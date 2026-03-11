@@ -8,23 +8,27 @@ type CardProps = {
   external?: boolean
 }
 
-const CARD_ICON_SIZE = 60
+const CARD_ICON_SIZE = 56
 
-const getButtonClass =
-  'flex h-8 min-w-[64px] shrink-0 items-center justify-center rounded-full px-4 text-[13px] font-semibold text-senumy-accent backdrop-blur-xl transition-opacity active:opacity-80 border border-[var(--glass-border)]'
+const btnBase =
+  'flex h-9 min-w-[72px] shrink-0 items-center justify-center rounded-full px-4 text-[13px] font-semibold transition-all duration-200 active:scale-[0.98]'
 
 export default function Card({ icon, title, description, href, external }: CardProps) {
   return (
     <div
-      className="flex min-h-[70px] items-center gap-3 rounded-xl p-3 backdrop-blur-xl border border-[var(--glass-border)]"
+      className="group flex min-h-[76px] items-center gap-4 rounded-xl border p-3.5 transition-all duration-200 hover:border-[var(--glass-border-focus)]/40 sm:gap-4 sm:p-4"
       style={{
-        backgroundColor: 'var(--glass-fill)',
-        boxShadow: 'inset 1px 1px 0 0 var(--glass-highlight)',
+        backgroundColor: 'var(--bg-card)',
+        borderColor: 'var(--glass-border)',
+        boxShadow: 'var(--shadow-card)',
       }}
     >
       <div
-        className="relative h-[60px] w-[60px] shrink-0 overflow-hidden rounded-lg border border-[var(--glass-border)] backdrop-blur-xl"
-        style={{ backgroundColor: 'var(--glass-fill-strong)' }}
+        className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border sm:h-[60px] sm:w-[60px]"
+        style={{
+          backgroundColor: 'var(--glass-fill-strong)',
+          borderColor: 'var(--glass-border)',
+        }}
       >
         {icon ? (
           <img
@@ -32,7 +36,7 @@ export default function Card({ icon, title, description, href, external }: CardP
             alt=""
             width={CARD_ICON_SIZE}
             height={CARD_ICON_SIZE}
-            className="h-full w-full object-contain"
+            className="h-full w-full object-contain p-1"
             loading="lazy"
             decoding="async"
           />
@@ -44,14 +48,24 @@ export default function Card({ icon, title, description, href, external }: CardP
       </div>
       <div className="min-w-0 flex-1">
         <div className="font-semibold text-[var(--text-primary)]">{title}</div>
-        <p className="mt-0.5 line-clamp-3 text-sm text-[var(--text-secondary)]">{description}</p>
+        <p className="mt-0.5 line-clamp-3 text-sm leading-snug text-[var(--text-secondary)]">{description}</p>
       </div>
       {external ? (
-        <a href={href} target="_blank" rel="noopener noreferrer" className={getButtonClass} style={{ backgroundColor: 'var(--glass-fill)' }} aria-label="Open">
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${btnBase} bg-senumy-accent/15 text-senumy-accent border border-senumy-accent/30 hover:bg-senumy-accent/25`}
+          aria-label="Open"
+        >
           GET
         </a>
       ) : (
-        <Link to={href} className={getButtonClass} style={{ backgroundColor: 'var(--glass-fill)' }} aria-label="Open">
+        <Link
+          to={href}
+          className={`${btnBase} bg-senumy-accent/15 text-senumy-accent border border-senumy-accent/30 hover:bg-senumy-accent/25`}
+          aria-label="Open"
+        >
           GET
         </Link>
       )}

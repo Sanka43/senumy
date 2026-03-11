@@ -6,8 +6,8 @@ type CtaPageProps = {
 
 export default function CtaPage({ children }: CtaPageProps) {
   return (
-    <div className="px-4 py-6">
-      <p className="text-[15px] font-bold leading-relaxed text-[var(--text-primary)]">
+    <div className="mx-auto max-w-content px-4 py-8 sm:px-6">
+      <p className="text-[15px] font-medium leading-relaxed text-[var(--text-primary)]">
         {children}
       </p>
       <CtaButtons />

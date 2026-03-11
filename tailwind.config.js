@@ -7,16 +7,18 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Text"', '"SF Pro Display"', 'sans-serif'],
+        sans: ['Outfit', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
       colors: {
         senumy: {
-          navy: '#00006d',
-          blue: '#20207f',
-          accent: '#00adf0',
-          link: '#006fd1',
+          navy: '#0f0f3d',
+          blue: '#1e1e5c',
+          accent: '#00c2ff',
+          'accent-dim': '#00a3d9',
+          link: '#38bdf8',
         },
         base: 'var(--bg-base)',
+        'base-subtle': 'var(--bg-subtle)',
         'base-elevated': 'var(--bg-elevated)',
         glass: {
           fill: 'var(--glass-fill)',
@@ -29,16 +31,24 @@ export default {
           primary: 'var(--text-primary)',
           secondary: 'var(--text-secondary)',
           tertiary: 'var(--text-tertiary)',
+          muted: 'var(--text-muted)',
         },
       },
       borderRadius: {
-        'ios': '12px',
-        'ios-lg': '20px',
+        'ios': 'var(--radius-sm)',
+        'ios-md': 'var(--radius-md)',
+        'ios-lg': 'var(--radius-lg)',
+        'ios-xl': 'var(--radius-xl)',
+        'ios-2xl': 'var(--radius-2xl)',
       },
       boxShadow: {
-        'card': '0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.08)',
+        'card': 'var(--shadow-card)',
+        'soft': 'var(--shadow-soft)',
         'glass-inner': 'inset 1px 1px 0 0 var(--glass-highlight)',
-        'glow-accent': '0 0 20px rgba(0, 173, 240, 0.25)',
+        'glow-accent': 'var(--glow-accent)',
+      },
+      maxWidth: {
+        'content': 'var(--content-max)',
       },
     },
   },

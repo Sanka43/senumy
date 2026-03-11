@@ -29,19 +29,19 @@ const STEPS = [
 
 export default function ThemesInstallGuide() {
   return (
-    <div className="px-4 py-6">
-      <p className="text-center text-lg font-bold text-senumy-link">
+    <div className="mx-auto max-w-content px-4 py-8 sm:px-6">
+      <p className="text-center text-lg font-semibold text-senumy-link">
         Steps Guide for Themes installation
       </p>
-      <div className="mt-6 space-y-6">
+      <div className="mt-8 space-y-8">
         {STEPS.map((step, i) => (
-          <section key={i}>
-            <h4 className="text-[15px] font-bold text-[var(--text-primary)]">{step.title}</h4>
-            <div className="mt-2 flex justify-center">
+          <section key={i} className="rounded-xl border p-4 sm:p-5" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--glass-border)' }}>
+            <h4 className="text-[15px] font-semibold text-[var(--text-primary)]">{step.title}</h4>
+            <div className="mt-3 flex justify-center">
               <img
                 src={step.img}
                 alt=""
-                className="w-[66%] max-w-sm rounded-lg"
+                className="w-[66%] max-w-sm rounded-xl shadow-soft"
                 loading="lazy"
               />
             </div>
