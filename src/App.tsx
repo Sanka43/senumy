@@ -41,7 +41,11 @@ const router = createBrowserRouter(
 
 function App() {
   return (
-    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-[var(--bg-base)] font-sans text-[var(--text-secondary)]">Loading…</div>}>
+    <Suspense fallback={
+        <div className="min-h-screen flex items-center justify-center bg-[var(--bg-base)] font-sans text-[var(--text-secondary)]" role="status" aria-label="Loading">
+          <span className="inline-block h-8 w-8 animate-spin rounded-full border-2 border-[var(--glass-border)] border-t-senumy-accent" />
+        </div>
+      }>
       <RouterProvider router={router} />
     </Suspense>
   )

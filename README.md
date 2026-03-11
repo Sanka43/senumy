@@ -27,7 +27,6 @@ The server must serve `index.html` for every path (e.g. `/BecomePremiumUser/`, `
 | **Apache** (XAMPP, cPanel, shared hosting) | `dist/.htaccess` is included after build. Ensure **AllowOverride** is enabled (e.g. `AllowOverride All`) for the folder. |
 | **Nginx** | `.htaccess` is ignored. Add this inside your `server { }` block: `try_files $uri $uri/ /index.html;` (see `dist/nginx.conf` after build). |
 | **Netlify** | `dist/_redirects` is included. Deploy the `dist/` folder. |
-| **Vercel** | `vercel.json` in the project root is used when you deploy. |
 
 If you still get 404: confirm the host is using one of the configs above and that you uploaded the **contents** of `dist/` (not the `dist` folder itself) to the correct document root.
 
