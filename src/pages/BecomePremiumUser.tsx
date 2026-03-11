@@ -121,7 +121,7 @@ export default function BecomePremiumUser() {
           WebkitBackdropFilter: 'blur(var(--glass-blur-panel))',
         }}
       >
-        <h2 className="text-base font-semibold text-[var(--text-primary)] sm:text-lg">
+        <h2 className="text-base font-semibold sm:text-lg" style={{ color: '#f4f4f6' }}>
           Already donated? Enter your code
         </h2>
         <p className="mt-2 text-sm text-[var(--text-secondary)]">
