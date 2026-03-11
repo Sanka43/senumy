@@ -14,26 +14,30 @@ const Zignee = lazy(() => import('./pages/Zignee'))
 const Acutus = lazy(() => import('./pages/Acutus'))
 const ThemesInstallGuide = lazy(() => import('./pages/ThemesInstallGuide'))
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Layout />,
-    children: [
-      { index: true, element: <Home /> },
-      { path: 'BecomePremiumUser/', element: <BecomePremiumUser /> },
-      { path: 'donate/', element: <Donate /> },
-      { path: 'SenumyJailbreakTools/', element: <SenumyJailbreakTools /> },
-      { path: 'SenumyIpaLibrary/', element: <SenumyIpaLibrary /> },
-      { path: 'iOSTweaks/', element: <IOSTweaks /> },
-      { path: 'Best_iOS_themes/', element: <BestiosThemes /> },
-      { path: '3rd_party_OSes/', element: <ThirdPartyOses /> },
-      { path: 'zignee/', element: <Zignee /> },
-      { path: 'acutus/', element: <Acutus /> },
-      { path: 'themesInstallGuide/', element: <ThemesInstallGuide /> },
-      { path: 'prytexdmifgdv7um/', element: <Home /> },
-    ],
-  },
-])
+// basename required for GitHub Pages: app is served at /senumy/
+const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <Layout />,
+      children: [
+        { index: true, element: <Home /> },
+        { path: 'BecomePremiumUser/', element: <BecomePremiumUser /> },
+        { path: 'donate/', element: <Donate /> },
+        { path: 'SenumyJailbreakTools/', element: <SenumyJailbreakTools /> },
+        { path: 'SenumyIpaLibrary/', element: <SenumyIpaLibrary /> },
+        { path: 'iOSTweaks/', element: <IOSTweaks /> },
+        { path: 'Best_iOS_themes/', element: <BestiosThemes /> },
+        { path: '3rd_party_OSes/', element: <ThirdPartyOses /> },
+        { path: 'zignee/', element: <Zignee /> },
+        { path: 'acutus/', element: <Acutus /> },
+        { path: 'themesInstallGuide/', element: <ThemesInstallGuide /> },
+        { path: 'prytexdmifgdv7um/', element: <Home /> },
+      ],
+    },
+  ],
+  { basename: '/senumy' }
+)
 
 function App() {
   return (
