@@ -1,1 +1,0 @@
-import{j as t}from"./index-C7rKO_dO.js";import{C as e}from"./CtaButtons-BsAQL-WJ.js";function m({children:a}){return t.jsxs("div",{className:"mx-auto max-w-content px-4 py-8 sm:px-6",children:[t.jsx("p",{className:"text-[15px] font-medium leading-relaxed text-[var(--text-primary)]",children:a}),t.jsx(e,{})]})}export{m as C};
