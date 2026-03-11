@@ -16,12 +16,14 @@ const BENEFITS = [
 export default function BecomePremiumUser() {
   const [code, setCode] = useState('')
   const [message, setMessage] = useState('')
+  const [show404, setShow404] = useState(false)
   const [loading, setLoading] = useState(false)
 
   const handleUpgrade = async () => {
     const trimmed = code.trim()
     if (!trimmed) return
     setMessage('')
+    setShow404(false)
     setLoading(true)
     try {
       const valid = await validatePremiumCodeAsync(trimmed)
@@ -29,8 +31,10 @@ export default function BecomePremiumUser() {
         setPremiumAndRedirect()
         return
       }
+      setShow404(true)
       setMessage(INVALID_MSG)
     } catch {
+      setShow404(true)
       setMessage('Something went wrong. Please try again or contact support.')
     } finally {
       setLoading(false)
@@ -132,6 +136,7 @@ export default function BecomePremiumUser() {
             onChange={(e) => {
               setCode(e.target.value)
               setMessage('')
+              setShow404(false)
             }}
             onKeyDown={(e) => {
               if (e.key === 'Enter') {
@@ -142,13 +147,29 @@ export default function BecomePremiumUser() {
           />
         </div>
 
-        {message && (
-          <p
-            className="mt-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-sm text-[var(--text-secondary)]"
+        {show404 && (
+          <div
+            className="mt-5 rounded-xl border border-[var(--glass-border)] py-8 text-center backdrop-blur-[var(--glass-blur-panel)] sm:py-10"
+            style={{
+              backgroundColor: 'var(--glass-fill)',
+              boxShadow: 'var(--shadow-card)',
+            }}
             role="alert"
           >
-            {message}
-          </p>
+            <p className="text-5xl font-bold tracking-tight text-[var(--text-secondary)] sm:text-6xl">404</p>
+            <p className="mt-2 text-base font-medium text-[var(--text-primary)] sm:text-lg">Code not found</p>
+            <p className="mx-auto mt-3 max-w-md px-4 text-sm text-[var(--text-secondary)]">
+              {message}
+            </p>
+            <p className="mt-4">
+              <a
+                href="mailto:premium.help.department@gmail.com?subject=Senumy Support !"
+                className="text-senumy-link font-medium underline underline-offset-2 hover:no-underline"
+              >
+                Contact support
+              </a>
+            </p>
+          </div>
         )}
 
         <div className="mt-5 flex justify-center">
